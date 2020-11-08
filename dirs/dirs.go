@@ -418,7 +418,9 @@ func SetRootDir(rootdir string) {
 		// snapshots of openSUSE Tumbleweed;
 		// both RHEL and CentOS list "fedora" in ID_LIKE
 		DistroLibExecDir = filepath.Join(rootdir, "/usr/libexec/snapd")
-	} else {
+	} else if release.DistroLike("gentoo") {
+        DistroLibExecDir = filepath.Join(rootdir, "/usr/lib64/snapd")
+    } else {
 		DistroLibExecDir = filepath.Join(rootdir, "/usr/lib/snapd")
 	}
 
